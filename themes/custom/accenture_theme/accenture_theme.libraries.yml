@@ -1,0 +1,29 @@
+global-style: # Libraries needed in all pages.
+  css:
+    theme:
+      'https://fonts.googleapis.com/css?family=Droid+Sans:400,700': { type: external }
+      assets/css/bootstrap.min.css: {}
+      assets/slick/slick-min.css: {} 
+      assets/css/main.css: {}
+      assets/css/animate.min.css: {}
+
+  js:
+    assets/js/jquery.min.js: {}
+    assets/js/bootstrap.bundle.min.js: {}
+    assets/slick/slick.min.js: {}
+    assets/js/gsap/TweenLite.min.js: {}
+    assets/js/gsap/TimelineLite.min.js: {}
+    assets/js/gsap/CSSPlugin.min.js: {}
+    assets/js/gsap/TweenMax.min.js: {}
+    assets/js/scrollmagic/ScrollMagic.min.js: {}
+    assets/js/scrollmagic/animation.gsap.min.js: {}
+    assets/js/slick-animation.min.js: {}
+    assets/js/counter/waypoints.min.js: {}
+    assets/js/counter/jquery.counterup.min.js: {}
+    assets/js/modernizr-custom.js: {}
+    assets/js/main.js: {}
+
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery

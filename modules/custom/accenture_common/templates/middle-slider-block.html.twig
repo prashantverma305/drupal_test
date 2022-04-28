@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row stagger-tween mb-5 pb-5 border-bottom">
+    <div class="col-12 col-lg-6">
+      <h2 class="weight-bolder stagger-tween-item font-primary mb-3 mb-lg-0">5G EXPLAINED</h2>
+    </div>
+  </div>
+  <div class="row stagger-tween">
+    <div class="col-12 col-lg-6 my-auto">
+      <!--<h2 class="weight-light stagger-tween-item">What is 5G?</h2>
+      <p class="larger mt-3 mb-4 mb-lg-0 stagger-tween-item">
+        5G is the latest generation of cellular technology. <br class="d-none d-lg-block">It is meant to deliver faster, more reliable, and lower latency connectivity than earlier generations.  It is set to revolutionise our everyday experiences and open up a future of <br class="d-none d-lg-block">unparalleled possibilities.
+      </p>-->
+      <dd>{{ drupal_view('midde_block', 'block_1') }}</dd>
+    </div>
+    <div class="col-12 col-lg-6 my-auto stagger-tween-item">
+      <div class="row">
+        <div class="col-11 col-lg-12 inershadow mx-auto">
+          <div class="row no-gutters">
+            <div class="col-6 my-auto fivegslider">
+              <div class="row no-gutters">
+                <div class="col-6">
+                  <div class="whatis5g">
+                    {% for keys, childs in network %}
+                        {% if(childs.NetworkDetails.NetworkID == 5) %}
+                          <div class="whatis5g-items colorbluebg"><div class="counter innertop">{{childs.NetworkDetails.NetworkID}}</div></div>
+                        {% else %}
+                          <div class="whatis5g-items"><div class="innertop">{{childs.NetworkDetails.NetworkID}}</div></div>
+                        {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+                <div class="col-5 text-left">
+                  <div class="innertop">
+                    G
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 mb-auto pl-2 pl-lg-3">
+              <div class="contentwhatis5g">
+                {% for keys, childs in network %}
+                    <div class="contentwhatis5g-items">
+                      <div class="d-flex align-items-start flex-column h-100">
+                        <p>{{childs.NetworkDetails.body}}<strong>{{childs.NetworkDetails.speed}}</strong></p>
+                        <div class="mt-auto"><img src="{{childs.NetworkDetails.Network_image}}" alt="icon" class="logoicon"></div>
+                      </div>
+                    </div>
+                {% endfor %}
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

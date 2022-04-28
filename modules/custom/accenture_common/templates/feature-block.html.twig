@@ -1,0 +1,37 @@
+<div class="vid-banner">
+         <div class="vid-banner-items videoslideimg">
+            <div class="videobgoverlay"></div>
+            <div class="bgoverlay2"></div>
+            <video playsinline webkit-playsinline autoplay muted width="1280" height="720" class="videoplay">
+               <source type="video/mp4" src="{{ base_path ~ directory }}/assets/video/unparalleled-possibilities.mp4">
+            </video>
+            <div class="container stagger-tween textcover">
+               <div class="row">
+                  <div class="col-12 col-lg-6 order-1 order-lg-2 offset-lg-6 my-auto">
+                     <div class="row">
+                        <div class="col-12">
+                           <h2 class="text-white firstline stagger-tween-item mt-3 pt-5 mt-lg-0 pt-lg-0">
+                              How Will 5G Enable <br class="d-none d-lg-block">
+                              Unparalleled Possibilities <br class="d-none d-lg-block">
+                              for the Future?
+                           </h2>
+                        </div>
+                     </div>
+                     <div class="row mb-5 pb-3 mb-lg-3 pb-lg-0">
+                         {% for keys, childs in feature %}
+                           <div class="col-6 stagger-tween-item">
+                              <div class="uspcontent">
+                                 <div class="uspcontent-title"><span class="newcounter">{{childs.featureDetail.from}}</span>x {% if(childs.featureDetail.to is not empty) %} to <span class="newcounter">{{childs.featureDetail.to}}</span>x{% endif %}</div>
+                                 <div class="uspcontent-sub">{{childs.featureDetail.body}}</div>
+                              </div>
+                           </div>
+                        {% endfor %}
+                        <div class="col-12 stagger-tween-item">
+                           <a href="./benefits-overview.html" class="generalcta outline hoversolid mt-5">Discover 5G’s Possibilities</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>

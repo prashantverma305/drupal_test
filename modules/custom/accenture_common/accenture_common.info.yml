@@ -1,0 +1,6 @@
+name: Accenture Common
+type: module
+description: 'This is a Common module'
+package: Custom
+version: 1.0
+core_version_requirement: ^8 || ^9

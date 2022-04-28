@@ -1,0 +1,7 @@
+accenture_common.welcome:
+  path: '/welcome'
+  defaults:
+    _controller: '\Drupal\accenture_common\Controller\AccentureController::welcome'
+    _title: 'Welcome to My Module in Drupal 9'
+  requirements: 
+    _permission: 'access content'

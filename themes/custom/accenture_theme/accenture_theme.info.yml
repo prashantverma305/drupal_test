@@ -1,0 +1,35 @@
+name : Accenture Theme
+description: 'Developed by Prashant'
+core_version_requirement: ^8 || ^9 
+type: theme 
+screenshot: screenshot.png
+base theme: classy
+
+#Libraries
+libraries:
+  - accenture_theme/global-style
+
+#Regions
+regions:
+  header: 'Header'
+  search: 'Search'
+  primary_menu: 'Primary Menu'
+  home_slider: 'Home Front Slick Slider'
+  home_middle_slider: 'Home Middle Slick Slider'
+  future: 'Future'
+  faqs: 'Frequently Asked Questions'
+  inner_banner: 'Inner Banner'
+  sidebar_menu: 'SideBar Menu'
+  content: 'Content'
+  banner: 'Banner'
+  footer_menu: 'Footer Menu'
+  footer: 'Footer'
+  disable_blocks: 'Disable Blocks'
+
+
+  
+
+# Information added by Drupal.org packaging script on 2022-04-19
+version: '2.0.0'
+project: 'accenture_theme'
+datestamp: 1650386850

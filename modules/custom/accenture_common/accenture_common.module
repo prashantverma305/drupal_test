@@ -1,0 +1,25 @@
+<?php
+
+use Drupal\block\Entity\Block;
+
+/*
+*function hook_theme()
+*/
+
+function accenture_common_theme($existing, $type, $theme, $path) {
+  return [
+    'faq-block' => [
+      'variables' => ['faqs' => NULL],
+    ],
+    'slider-block' => [
+      'variables' => ['homeslider' => NULL],
+    ],
+    'middle-slider-block' => [
+      'variables' => ['network' => NULL],
+    ],
+    'feature-block' => [
+      'variables' => ['feature' => NULL],
+    ],
+  ];
+}
+
