@@ -26,8 +26,7 @@
         "drupal/slick": "^2.6",
         "drupal/slick_views": "^2.6",
         "drupal/svg_image": "^1.16",
-        "drupal/video_embed_field": "^2.4",
-        "drush/drush": "^11.0"
+        "drupal/video_embed_field": "^2.4"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -93,5 +92,8 @@
                 "      composer remove drupal/core-project-message"
             ]
         }
+    },
+    "require-dev": {
+        "drush/drush": "^11.0"
     }
 }
