@@ -20,43 +20,36 @@ class FaqBlock extends BlockBase {
    * {@inheritdoc}
    */
   public function build() {
-    $db = \Drupal::database();
-    $query = $db->select('node', 'n')
-      ->condition('n.type', 'faq')
-      ->fields('n');
-    $result = $query->execute()->fetchAll();
-    $nids = [];
-    foreach($result as $rec){
-      $nids[] = $rec->nid;
+    $nids = \Drupal::entityQuery('node')
+            ->condition('type','faqs')
+            ->condition('status', 1)
+            ->sort('created','DESC')
+            ->execute();
+    $nodes =  Node::loadMultiple($nids);
+
+    $faqs_countries = \Drupal::service('entity_type.manager')->getStorage("taxonomy_term")->loadTree('faqs');
+    foreach($faqs_countries as $faqs) {
+      $terms[] = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->load($faqs->tid);
+      $data['faqs'] = $terms;
     }
-    // $nodes = Node::loadMultiple($nids);
-    foreach($nids as $nidint){
-      $node = \Drupal\node\Entity\Node::load($nidint);
-      $data[] = array(
-        'field_network' => $node->get('field_network')->getValue(),
-        'body' => $node->get('body')->getValue(),
-        //  'field_image' => MiddleSlider::getSliderImagePathFromFid($node->get('field_image')->target_id),
+
+    foreach($nodes as $node){
+      $nid = $node->id();
+      $title = $node->get('title')->getValue()[0]['value'];
+      $body  = $node->get('body')->getValue()[0]['value'];
+
+      $data[$nid]['faqsDetail'] = array(
+        'featuretitle' => $title,
+        'body' => $body,
+        'nid' => $nid,
       );
     }
 
     return [
       '#theme' => 'faq-block',
-      '#slider' => [
-        'details' => $data,
-      ],
+      '#faqs' => $data,
     ];
   }
 
-
-  /**
-   * Returns image path from fid.
-   *
-   * @return type string
-   *  File path.
-   */
-  public static function getSliderImagePathFromFid($fid) {
-    $file = \Drupal\file\Entity\File::load($fid);
-    return \Drupal\image\Entity\ImageStyle::load('nostyle')->buildUrl($file->getFileUri());
-  }
 
 }
