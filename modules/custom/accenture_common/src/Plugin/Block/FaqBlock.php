@@ -35,7 +35,7 @@ class FaqBlock extends BlockBase {
       $data[] = array(
         'field_network' => $node->get('field_network')->getValue(),
         'body' => $node->get('body')->getValue(),
-        // 'field_image' => MiddleSlider::getSliderImagePathFromFid($node->get('field_image')->target_id),
+        //  'field_image' => MiddleSlider::getSliderImagePathFromFid($node->get('field_image')->target_id),
       );
     }
 
