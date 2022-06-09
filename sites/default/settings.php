@@ -780,3 +780,8 @@ $databases['default']['default'] = array (
   'driver' => 'mysql',
 );
 $settings['config_sync_directory'] = 'sites/default/files/config_621cWck3UKPaGzv6bJiZUsObmLAuTdbqPsObO_9qWnZFkPP1pNObipjENmWbEPPXQx4qwwso1A/sync';
+
+// $settings['redis.connection']['interface'] = 'PhpRedis'; // Can be "Predis".
+// $settings['redis.connection']['host']      = '127.0.0.1';  // Your Redis instance hostname.
+// $settings['cache']['default'] = 'cache.backend.redis';
+// $settings['container_yamls'][] = 'sites/default/redis.services.yml';

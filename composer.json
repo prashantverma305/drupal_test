@@ -23,10 +23,13 @@
         "drupal/core-vendor-hardening": "^9.3",
         "drupal/devel": "^4.1",
         "drupal/devel_kint_extras": "^1.0",
+        "drupal/redis": "^1.5",
+        "drupal/restui": "^1.20",
         "drupal/slick": "^2.6",
         "drupal/slick_views": "^2.6",
         "drupal/svg_image": "^1.16",
-        "drupal/video_embed_field": "^2.4"
+        "drupal/video_embed_field": "^2.4",
+        "predis/predis": "^2.0"
     },
     "conflict": {
         "drupal/drupal": "*"
