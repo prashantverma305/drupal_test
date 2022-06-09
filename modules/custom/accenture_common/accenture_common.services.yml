@@ -1,0 +1,4 @@
+services:
+  accenture_common.custom_services:
+    class: Drupal\accenture_common\CustomService
+    arguments: ['@current_user']

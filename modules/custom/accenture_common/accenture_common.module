@@ -23,3 +23,8 @@ function accenture_common_theme($existing, $type, $theme, $path) {
   ];
 }
 
+function accenture_common_preprocess_node(&$variables){
+
+  $data = \Drupal::service('accenture_common.custom_services')->getData();
+  var_dump($data);
+}
