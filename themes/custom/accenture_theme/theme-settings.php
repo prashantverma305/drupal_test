@@ -79,7 +79,7 @@ function accenture_theme_form_system_theme_settings_alter(array &$form, FormStat
     '#title' => t('Footer Description'),
     '#description' => t('Please enter footer description...'),
     '#default_value' => $footer_description['value'],
-    '#foramt'        => $footer_description['format'],
+    '#format'        => $footer_description['format'],
   );
     
 }

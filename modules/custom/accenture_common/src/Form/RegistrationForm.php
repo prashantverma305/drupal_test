@@ -7,72 +7,107 @@ namespace Drupal\accenture_common\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Database\Database;
+use Drupal\Core\Url;
+use Drupal\Core\Routing;
 
+/**
+ * Provides the form for adding countries.
+ */
 class RegistrationForm extends FormBase {
+
   /**
    * {@inheritdoc}
    */
   public function getFormId() {
     return 'student_registration_form';
   }
-  
+
+  /**
+   * {@inheritdoc}
+   */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $form['student_name'] = array(
+
+
+    
+    $form['fname'] = [
       '#type' => 'textfield',
-      '#title' => t('Enter Name:'),
+      '#title' => $this->t('First Name'),
       '#required' => TRUE,
-    );
-    $form['student_rollno'] = array(
+      '#maxlength' => 20,
+      '#default_value' =>  '',
+    ];
+	 $form['sname'] = [
       '#type' => 'textfield',
-      '#title' => t('Enter Enrollment Number:'),
+      '#title' => $this->t('Second Name'),
       '#required' => TRUE,
-    );
-    $form['student_mail'] = array(
-      '#type' => 'email',
-      '#title' => t('Enter Email ID:'),
+      '#maxlength' => 20,
+      '#default_value' =>  '',
+    ];
+	$form['age'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Age'),
       '#required' => TRUE,
-    );
-    $form['student_phone'] = array (
-      '#type' => 'tel',
-      '#title' => t('Enter Contact Number'),
-    );
-    $form['student_dob'] = array (
-      '#type' => 'date',
-      '#title' => t('Enter DOB:'),
+      '#maxlength' => 20,
+      '#default_value' => '',
+    ];
+	 $form['marks'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Marks'),
       '#required' => TRUE,
-    );
-    $form['student_gender'] = array (
-      '#type' => 'select',
-      '#title' => ('Select Gender:'),
-      '#options' => array(
-        'Male' => t('Male'),
-		'Female' => t('Female'),
-        'Other' => t('Other'),
-      ),
-    );
+      '#maxlength' => 20,
+      '#default_value' => '',
+    ];
+	
     $form['actions']['#type'] = 'actions';
-    $form['actions']['submit'] = array(
+    $form['actions']['submit'] = [
       '#type' => 'submit',
-      '#value' => $this->t('Register'),
       '#button_type' => 'primary',
-    );
+      '#default_value' => $this->t('Save') ,
+    ];
+	
+	//$form['#validate'][] = 'studentFormValidate';
+
     return $form;
+
   }
   
-  public function validateForm(array &$form, FormStateInterface $form_state) {
-    if(strlen($form_state->getValue('student_rollno')) < 8) {
-      $form_state->setErrorByName('student_rollno', $this->t('Please enter a valid Enrollment Number'));
-    }
-    if(strlen($form_state->getValue('student_phone')) < 10) {
-      $form_state->setErrorByName('student_phone', $this->t('Please enter a valid Contact Number'));
-    }
+   /**
+   * {@inheritdoc}
+   */
+  public function validateForm(array & $form, FormStateInterface $form_state) {
+       $field = $form_state->getValues();
+	   
+		$fields["fname"] = $field['fname'];
+		if (!$form_state->getValue('fname') || empty($form_state->getValue('fname'))) {
+            $form_state->setErrorByName('fname', $this->t('Provide First Name'));
+        }
+		
+		
   }
-  
-  public function submitForm(array &$form, FormStateInterface $form_state) {
-    \Drupal::messenger()->addMessage(t("Student Registration Done!! Registered Values are:"));
-	foreach ($form_state->getValues() as $key => $value) {
-	  \Drupal::messenger()->addMessage($key . ': ' . $value);
-    }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function submitForm(array & $form, FormStateInterface $form_state) {
+	try{
+		$conn = Database::getConnection();
+		
+		$field = $form_state->getValues();
+	   
+		$fields["fname"] = $field['fname'];
+		$fields["sname"] = $field['sname'];
+		$fields["age"] = $field['age'];
+		$fields["marks"] = $field['marks'];
+		
+		  $conn->insert('students')
+			   ->fields($fields)->execute();
+		  \Drupal::messenger()->addMessage($this->t('The Student data has been succesfully saved'));
+		 
+	} catch(Exception $ex){
+		\Drupal::logger('dn_students')->error($ex->getMessage());
+	}
+    
   }
 
 }
