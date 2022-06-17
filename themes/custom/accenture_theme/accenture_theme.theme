@@ -43,6 +43,7 @@ function accenture_theme_preprocess_views_view(&$variables) {
 function accenture_theme_theme_suggestions_page_alter(array &$suggestions, array $variables) {
   // Get Request Object.
   $request = \Drupal::request();
+  //echo "<pre>"; print_r($request);
   // If there is HTTP Exception..
   if ($exception = $request->attributes->get('exception')) {
     // Get the status code.

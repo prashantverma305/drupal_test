@@ -4,4 +4,12 @@ accenture_common.welcome:
     _controller: '\Drupal\accenture_common\Controller\AccentureController::welcome'
     _title: 'Welcome to My Module in Drupal 9'
   requirements: 
-    _permission: 'access content'
+    _permission: 'TRUE'
+    
+accenture_common.registration:
+  path: '/registration'
+  defaults:
+    _title: 'Registration Form'
+    _form: '\Drupal\accenture_common\Form\RegistrationForm'
+  requirements:
+    _access: 'TRUE'
